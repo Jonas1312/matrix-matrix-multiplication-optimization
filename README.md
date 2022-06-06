@@ -179,3 +179,5 @@ IKJ: 15300 ms
 ```
 
 +80% faster!
+
+Even though it is "optimized", it is still orders of magnitude slower than BLAS...
