@@ -123,3 +123,5 @@ Step: 4
 IJK: 26300 ms
 IKJ: 15300 ms
 ```
+
++80% faster!
