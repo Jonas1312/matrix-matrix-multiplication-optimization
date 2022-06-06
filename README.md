@@ -1,4 +1,5 @@
 # Matrix Matrix Multiplication Optimization
+## Problematic
 
 You probably learnt at school the matrix matrix multiplication formula:
 
@@ -23,6 +24,16 @@ This may seem surprising but this implementation is actually quite slow.
 Let's look on a diagram what happens in memory:
 
 ![](mat.png)
+
+To compute the first element of $C$, we need the first line of $A$ and first column of $B$.
+
+For $A$ everything looks good. The outer loop on $i$ will stop on the first row, and the inner loop on $k$ will iterate on the elements of that row.
+
+It looks good because the way $k$ ierates on $A$ is efficient. The first line of $A$ is stored in a contiguous way in memory. This means that when the program will get $A_{00}$, the computer will actually get the whole row of $A$ and store it in cache. This way, the next time we need an element of $A_{0}$, it will be extremely fast to fetch it since it will be in cache.
+
+For $B$, things are different since the inner loop on $k$ iterates on $B$ columns. This means that the program will fetch and cache each row of $B$ and use only one element for each row. This is highly inefficient.
+
+## Code
 
 ```c++
 #include <cassert>
@@ -125,6 +136,7 @@ int main(int argc, char **argv) {
 }
 
 ```
+## Results
 
 ```console
 Step: 0
