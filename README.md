@@ -1,5 +1,29 @@
 # Matrix Matrix Multiplication Optimization
 
+You probably learnt at school the matrix matrix multiplication formula:
+
+$$C_{ij} = \sum_k{A_{ik}B_{kj}}$$
+
+Translating that formula in C++ gives:
+
+```c++
+for (int i = 0; i < N; ++i) {
+    for (int j = 0; j < N; ++j) {
+        for (int k = 0; k < N; k++) {
+            C[i][j] += A[i][k] * B[k][j];
+        }
+    }
+}
+```
+
+This implementation looks so straightforward and simple that one might think there is nothing to optimize.
+
+This may seem surprising but this implementation is actually quite slow.
+
+Let's look on a diagram what happens in memory:
+
+![](mat.png)
+
 ```c++
 #include <cassert>
 #include <chrono>
