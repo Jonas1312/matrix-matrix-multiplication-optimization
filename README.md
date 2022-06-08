@@ -41,7 +41,7 @@ The most elegant solution is to swap the two inner loops on $j$ and $k$:
 
 ```c++
 for (int i = 0; i < N; ++i) {
-    for (int k = 0; k < N; k++) {
+    for (int k = 0; k < N; ++k) {
         for (int j = 0; j < N; ++j) {
             C[i][j] += A[i][k] * B[k][j];
         }
